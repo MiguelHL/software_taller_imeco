@@ -2,6 +2,17 @@
 
 @section('content')
 
+@section('style')
+<!-- iCheck -->
+<link rel="stylesheet" href="{{asset('css/icheck-bootstrap.min.css')}}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{{asset('css/jqvmap.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.min.css')}}">
+@endsection
+-
 <!-- navbar -->
 @include('shared.navbar')
 
@@ -15,12 +26,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Proveedores</h1>
+                    <h1 class="m-0">PROVEEDOR</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                        <li class="breadcrumb-item active">Proveedores</li>
+                        <li class="breadcrumb-item active">Usuarios</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -36,7 +47,7 @@
                     <div class="card">
                         <div class="card-header">
                             <!-- <h3 class="card-title">DataTable with minimal features &amp; hover style</h3> -->
-                            <button class="btn btn-primary">Nuevo</button>
+                            <a href="proveedor/create" class="btn btn-primary">Crear Proveedor</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -50,45 +61,33 @@
                                         <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                             <thead>
                                                 <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Rendering engine</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Browser</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">Codigo</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nombre</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Direccion</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Telefono</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Editar</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Eliminar</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                
+                                                @foreach ($proveedor as $row)
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.7</td>
-                                                    <td>A</td>
+                                                    <td>{{ $row->id}}</td>
+                                                    <td>{{ $row->nombre}}</td>
+                                                    <td>{{ $row->direccion}}</td>
+                                                    <td>{{ $row->telefono}}</td>
+                                                    <td><a href="/proveedor/{{$row->id}}/edit" class="btn btn-info">Editar</a></td>
+                                                    <td>
+                                                        <form action="{{ route('proveedor.destroy',$row->id)}}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Borrar</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
-                                                <tr role="row" class="even">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 1.5</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 2.0</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th rowspan="1" colspan="1">Rendering engine</th>
-                                                    <th rowspan="1" colspan="1">Browser</th>
-                                                    <th rowspan="1" colspan="1">Platform(s)</th>
-                                                    <th rowspan="1" colspan="1">Engine version</th>
-                                                    <th rowspan="1" colspan="1">CSS grade</th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>

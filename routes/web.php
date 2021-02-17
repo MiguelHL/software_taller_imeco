@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +22,7 @@ Route::get('/usuario', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/proveedor','ProveedorController@index')->name('prov');
+
+Route::resource('proveedor',ProveedorController::class);
