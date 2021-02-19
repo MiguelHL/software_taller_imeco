@@ -10,6 +10,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('home');
     // return view('welcome');
@@ -26,3 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/proveedor','ProveedorController@index')->name('prov');
 
 Route::resource('proveedor',ProveedorController::class);
+
+Route::resource('categoria',CategoriaController::class);
+
+Route::resource('unidadmedida',UnidadMedidaController::class);
+

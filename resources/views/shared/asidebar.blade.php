@@ -83,19 +83,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/unidadmedida" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Stock</p>
+                  <p>Unidad medida</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/categoria" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Material</p>
+                  <p>Categoria</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/proveedor" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proveedor</p>
                 </a>
